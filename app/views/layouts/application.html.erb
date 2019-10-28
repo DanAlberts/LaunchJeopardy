@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LaunchJeopardy</title>
+  <title>Jeopardy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  
-  <nav class="top-bar">
-    <h1><a href="/">LaunchJeopardy</a></h1>
+<body class="back-color">
 
-    <section class="top-bar-section">
-      <ul class="right">
-        <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+<nav class="navbar navbar-expand-lg navbar-light nav-color">
+  <a class="navbar-brand" href="#">Jeopardy</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <section>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <%- if current_user -%>
+      <li class="nav-item active">
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+      </li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <li class="nav-item active">
+        <%= link_to 'Sign Up', new_user_registration_path %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to 'Sign In', new_user_session_path %>
+      </li>
         <%- end -%>
-      </ul>
-    </section>
-  </nav>
+    </ul>
+  </div>
+  <section>
+</nav>
 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
