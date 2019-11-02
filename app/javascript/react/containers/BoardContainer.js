@@ -3,7 +3,7 @@ import CategoryTile from "../components/CategoryTile"
 
 const BoardContainer = (props) => {
   const[categories, setCategories] = useState([])
-  // const[currentUserId, setCurrentUserId] = useState(null)
+  const [user, setUser] = useState({})
 
   useEffect(()=> {
     fetch("/api/v1/categories")
