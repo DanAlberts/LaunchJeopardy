@@ -1,24 +1,19 @@
-# README
+Notes: 
+* BoardContainer is now old code
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+Todo List:
 
-* System dependencies
+**Simple Todos**
+* create landing button with "Join Game" button
+* join game button brings them to a random Game show page (but for now, should always create a new one and send them to that new game's show page)
+* restyle everything (brighter colors and more like jeopardy)
 
-* Configuration
+*In CoolerBoardContainer*
+* Get it all to render! state is set up, but there might be some issues with the child CategoryTiles
 
-* Database creation
+*In Api::V1::GamesController*
+* create `GameSerializer` to be used in the games controller instead of `game_json`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* start sending actioncable broadcasts to backend

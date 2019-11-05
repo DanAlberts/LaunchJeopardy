@@ -1,15 +1,14 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 const Home = (props) => {
-
-
   return(
     <>
       <div>
-        <h1>Jeopardy!</h1>
+        <h1>Welcome to KnowItAll</h1>
       </div>
       <div>
-        <h2>Link to default game page</h2>
+        <button><Link to={`/games/1`}>Quick Game</Link></button>
       </div>
     </>
   )

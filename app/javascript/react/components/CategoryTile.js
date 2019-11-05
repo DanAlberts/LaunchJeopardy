@@ -2,14 +2,14 @@ import React from 'react'
 import ClueTile from './ClueTile'
 
 const CategoryTile = (props) => {
-  const clueList = props.clues.map((question, index) => {
+  const clueList = props.clues.map((question) => {
     return(
       <ClueTile
-        key={question.options.id}
-        id={index}
-        clue={question.options.question}
-        answer={question.options.answer}
-        value={question.options.value}
+        key={question.id}
+        id={question.id}
+        clue={question.question}
+        answer={question.answer}
+        value={question.value}
       />
     )
   })

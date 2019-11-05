@@ -1,34 +1,42 @@
 import React, { useState, useEffect } from "react"
 import CategoryTile from "../components/CategoryTile"
 
-const BoardContainer = (props) => {
-  const[categories, setCategories] = useState([])
+const CoolerBoardContainer= (props) => {
+  // debugger
+  const [categories, setCategories] = useState([])
   const [user, setUser] = useState({})
-  const [selection, setSelection] = useState({selectionId: null, correctAnswerStatus: null})
+  
+  // to use once AC is setup => const [selection, setSelection] = useState({selectionId: null, correctAnswerStatus: null})
 
   useEffect(() => {
+    // debugger
     fetch(`/api/v1/games/${props.match.params.id}`)
     .then((response)=> {
+      // debugger
       if (response.ok) {
         return response
+        // debugger
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
         error = new Error(errorMessage)
         throw(error)
       }
     })
+    // debugger
     .then(response => response.json())
-    .then(data => {
-      setCategories(data.categories)
-      // setUser(data.user)
-      setUser({user_id: 1, userName: "joeshmo"})
+    .then(gameData => {
+      debugger
+      setCategories(gameData.gameState)
+      debugger
+      setUser(gameData.user)
     })
-        App.gameChannel = App.cable.subscriptions.create(
+    // debugger
+      App.gameChannel = App.cable.subscriptions.create(
       // Info that is sent to the subscribed method
       {
         channel: "GameChannel",
-        game_id: 1
-        // game_id: props.match.params["id"]
+        // game_id: 1
+        game_id: props.match.params["id"]
       },
       {
         connected: () => console.log("GameChannel connected"),
@@ -43,23 +51,17 @@ const BoardContainer = (props) => {
   }, [])
 
   const handleGameReceipt = (newGameData) => {
-      // update the board to remove the clue based on the `clue_id` from the selection
-      // update the players score from the gameSession
-      // update the turn (if there is more than one player)
+    setGameState(gameData.gameState)
   }
 
   const chooseCategory = (event) => {
-
-    let selectionId
-
-      App.gameChannel.send({
-        message: "nick is cool",
-        user: user,
-        selection: selection
-      })
+    App.gameChannel.send({
+      message: "Monkeys are cool",
+      user: user,
+      selection: selection
+    })
   }
-
-
+debugger
   const categoriesList = categories.map(category => {
     return(
       <CategoryTile
@@ -69,7 +71,6 @@ const BoardContainer = (props) => {
       />
     )
   })
-
 
   return(
     <>
@@ -81,4 +82,4 @@ const BoardContainer = (props) => {
   )
 }
 
-export default BoardContainer
+export default CoolerBoardContainer

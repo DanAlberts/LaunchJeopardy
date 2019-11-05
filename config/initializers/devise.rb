@@ -149,7 +149,7 @@ Devise.setup do |config|  config.secret_key = Rails.application.secret_key_base
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
-  # config.confirmation_keys = [:email]
+  config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
