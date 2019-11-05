@@ -1,16 +1,11 @@
 class Api::V1::CategoriesController < ApiController
 
   def index
-    categories = JAPI::Trebek.categories(options = {count: 4, offset: rand(10000)})
-    
-    clues = [] 
-    categories.each do |category|
-      clues << category.clues
-    end
-
+    created_game = GameCreator.new
+    created_game.generate_new_game
+binding.pry
     render json: {
-      categories: categories,
-      clues: clues
+      categories: gCategories.last(4)
     }
   end
 
@@ -36,7 +31,3 @@ class Api::V1::CategoriesController < ApiController
   #   }
   # end
 end
-    # category0 = JAPI::Trebek.category(categories[0].id)
-    # category1 = JAPI::Trebek.category(categories[1].id)
-    # category2 = JAPI::Trebek.category(categories[2].id)
-    # category3 = JAPI::Trebek.category(categories[3].id)
