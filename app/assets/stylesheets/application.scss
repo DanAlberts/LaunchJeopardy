@@ -196,7 +196,7 @@ button {
 
 .modali-size-regular {
   min-width: 100%;
-  max-width: 500px;
+  max-width: 700px;
 }
 
 @media (min-width: 500px) {
@@ -207,12 +207,12 @@ button {
 
 .modali-size-large {
   min-width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
 }
 
 @media (min-width: 500px) {
   .modali-size-large {
-    min-width: 800px !important;
+    min-width: 1000px !important;
   }
 }
 
@@ -296,4 +296,134 @@ button {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
+}
+
+#visual-timer {
+    background-color: white;
+    height: 2vh;
+    margin: 10 50 10 10px;
+    width: 1px;
+}
+
+.height-change {
+    /* Animation code */
+    -webkit-animation-name: heightChange; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 60s; /* Safari 4.0 - 8.0 */
+    animation-name: heightChange;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes heightChange {
+    0%   {width: 60vh;}
+    25%  {width: 45vh;}
+    50%  {width: 30vh;}
+    75%  {width: 15vh;}
+    100% {width: 0vh;}
+}
+
+/* Standard syntax */
+@keyframes heightChange {
+    0%   {width: 60vh;}
+    25%  {width: 45vh; background-color: yellow;}
+    50%  {width: 30vh; background-color: orange;}
+    75%  {width: 15vh; background-color: red;}
+    100% {width: 0vh; background-color: #af111c}
+}
+
+#visual-timer {
+    background-color: white;
+    height: 2vh;
+    margin: 10 50 10 10px;
+    width: 1px;
+    border-radius: 3px 0 0 3px;
+    float: left;
+
+}
+
+.height-change {
+    /* Animation code */
+    -webkit-animation-name: heightChange; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 60s; /* Safari 4.0 - 8.0 */
+    animation-name: heightChange;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes heightChange {
+    0%   {width: 40vh;}
+    25%  {width: 30vh; background-color: yellow;}
+    50%  {width: 20vh; background-color: orange;}
+    75%  {width: 10vh; background-color: red;}
+    100% {width: 0vh; background-color: #af111c}
+}
+
+/* Standard syntax */
+@keyframes heightChange {
+    0%   {width: 40vh;}
+    25%  {width: 30vh; background-color: yellow;}
+    50%  {width: 20vh; background-color: orange;}
+    75%  {width: 10vh; background-color: red;}
+    100% {width: 0vh; background-color: #af111c}
+}
+#visual-timer2 {
+    background-color: white;
+    height: 2vh;
+    margin: 10 50 10 10px;
+    width: 1px;
+    border-radius: 0px 3px 3px 0;
+    float: right;
+    // animation-direction: reverse;
+}
+
+.height-change2 {
+    /* Animation code */
+    -webkit-animation-name: heightChange2; /* Safari 4.0 - 8.0 */
+    -webkit-animation-duration: 60s; /* Safari 4.0 - 8.0 */
+    animation-name: heightChange2;
+    animation-duration: 10s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1
+    // animation-direction: reverse;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes heightChange2 {
+    0%   {width: 40vh;}
+    25%  {width: 30vh; background-color: yellow;}
+    50%  {width: 20vh; background-color: orange;}
+    75%  {width: 10vh; background-color: red;}
+    100% {width: 0vh; background-color: #af111c}
+}
+
+/* Standard syntax */
+@keyframes heightChange2 {
+    0%   {width: 40vh;}
+    25%  {width: 30vh; background-color: yellow;}
+    50%  {width: 20vh; background-color: orange;}
+    75%  {width: 10vh; background-color: red;}
+    100% {width: 0vh; background-color: #af111c}
+}
+
+// .answerform{
+
+// }
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+}
+
+.center2 {
+  position: absolute;
+  right: 50%;
+  top: 10%;
+}
+
+.hidden {
+  visibility: hidden
 }
