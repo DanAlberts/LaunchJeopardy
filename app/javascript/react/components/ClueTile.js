@@ -1,6 +1,5 @@
 import React from 'react'
 import Modali, { useModali } from 'modali'
-import AnswerForm from './AnswerForm'
 
 const ClueTile = (props) => {
   let clue = props.clue
@@ -8,10 +7,7 @@ const ClueTile = (props) => {
   const [completeExample, toggleCompleteModal] = useModali({
     animated: true,
     title: `${clue}`,
-    message: <AnswerForm
-            answer={answer}
-            />,
-    large: true,
+    message: `${answer}`,
     buttons: [
       <Modali.Button
         label="Cancel"
