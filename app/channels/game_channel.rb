@@ -9,25 +9,26 @@ class GameChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    binding.pry
+  
     puts data
-    let user_id = data[:user][:user_id]
-    let game_id = params[:game_id]
-    let answer_status = data[:selection][:answerStatus]
-    # Currently, we dont actually use this code that much. But you would have to set up these models if you want to record the conversations in your chat.
+    game_id = params[:game_id]
+    user_id = data["user"]["id"]
+    user_answer = data["userAnswer"]
+    clue_id = data["clueId"]
     game = Game.find(game_id)
-    selection = Selection.find(data[:selection][:selectionId])
-    
+    clue = Clue.find(clue_id)
+    selection = Selection.find_by(clue: clue, game: game)
     selection.user_id = user_id
-    selection.answer_status = data[:selection][:answerStatus]
     selection.save!
 
     game_session = GameSession.find_by(user_id: user_id, game_id: game_id)
-    
-    if answer_status == true #correct
-      game_session.score += selection.clue.value
-    elsif answer_status == false #incorrect
-      game_session.score -= selection.clue.value
+    # DETERMINE ANSWER STATUS 
+    if clue.answer == user_answer
+      game_session.score = game_session.score + selection.clue.value
+      selection.answerStatus = true
+    else 
+      game_session.score = game_session.score - selection.clue.value
+      selection.answerStatus = true
     end
 
     game_session.save!

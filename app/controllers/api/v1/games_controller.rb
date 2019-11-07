@@ -5,13 +5,13 @@ class Api::V1::GamesController < ApiController
     game = Game.find_by(id: params[:id])
     # binding.pry
     if game.present?
-      render json: { gameState: game_json(game), user: current_user }
+      render json: { gameState: game_json(game), user: current_user}
       # binding.pry
     else 
       created_game = GameCreator.new(current_user)
       created_game.generate_new_game
       # binding.pry
-      render json: { gameState: game_json(created_game), user: current_user }
+      render json: { gameState: game_json(created_game), user: current_user}
     end
   end
 

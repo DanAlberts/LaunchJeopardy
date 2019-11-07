@@ -5,11 +5,15 @@ import AnswerForm from './AnswerForm'
 const ClueTile = (props) => {
   let clue = props.clue
   let answer = props.answer
+
   const [completeExample, toggleCompleteModal] = useModali({
+    onShow: () => setTimeout(toggleCompleteModal, 15000),
     animated: true,
     title: `${clue}`,
     message: <AnswerForm
-            answer={answer}
+              clueId={props.id}
+              answer={answer}
+              broadcastUserAnswer={props.broadcastUserAnswer}
             />,
     large: true,
     buttons: [
@@ -29,7 +33,7 @@ const ClueTile = (props) => {
           <p>{props.value}</p>
         </div>
         <div className="card-footer">
-          <button className="button-default" onClick={toggleCompleteModal}>Show Modal</button>
+          <button className="modali-button-default" onClick={toggleCompleteModal}>Click to Answer!</button>
         </div>
       </div>
     </div>

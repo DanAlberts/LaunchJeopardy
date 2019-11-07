@@ -3,51 +3,41 @@ import React, { useState, useEffect } from 'react'
 const AnswerForm = (props) => {
   let clueAnswer = props.answer.toLowerCase()
   const [correct, setCorrect] = useState(null)
-  const [answer, setAnswer] = useState({
-    answer: ""
-  })
+  const [userAnswer, setUserAnswer] = useState("")
+  let wrong = "hidden"
   let visible = "hidden"
   if(correct === true){
     visible = "visible"
+  }else if(correct === false && userAnswer !== ""){
+    wrong = "visible"
   }
 
-  let wrong = "hidden"
 
     const handleFieldChange = event => {
-    setAnswer({
-      answer,
-      [event.currentTarget.name]: event.currentTarget.value
-    })
+    setUserAnswer(event.currentTarget.value)
   }
 
   const handleAnswerSubmit = (event) =>{
     event.preventDefault()
-    let fAnswer = answer.answer.toLowerCase()
+    let fAnswer = userAnswer.toLowerCase()
     if (fAnswer === clueAnswer){
-      debuuger
       setCorrect(true)
     }else{
-      wrong = "visible"
+      setCorrect(false)
     }
+
+    // debugger
+    props.broadcastUserAnswer(props.clueId, userAnswer)
   }
 
   function startTimer(duration, display) {
-
     var minTimer = duration, seconds;
-    
     setInterval(function () {
-        // let visualTimer = document.getElementById('visual-timer')
-        // // visualTimer.classList.add("height-change")
-
-        seconds = parseInt(minTimer % 60)
-
-        seconds = seconds < 10 ? + seconds : seconds
-
-        if (--minTimer < 0) {
-            // visualTimer.classList.remove("height-change")
-            minTimer = duration
-        }
-
+      seconds = parseInt(minTimer % 60)
+      seconds = seconds < 10 ? + seconds : seconds
+      if (--minTimer < 0) {
+          minTimer = duration
+      }
     }, 1000)
 }
 
@@ -62,14 +52,9 @@ useEffect(() => {
     var minTimer = duration, seconds;
     
     setInterval(function () {
-        // let visualTimer = document.getElementById('visual-timer2')
-        // visualTimer.classList.add("height-change2")
         seconds = parseInt(minTimer % 60)
-
         seconds = seconds < 10 ? + seconds : seconds
-
         if (--minTimer < 0) {
-            // visualTimer.classList.remove("height-change2")
             minTimer = duration
         }
 
@@ -90,16 +75,18 @@ useEffect(() => {
         <div id="visual-timer2" className="center height-change2">
         </div>
         </div>
+        <div className="space"></div>
+        <div></div>
       <div className="answerform" id="answerform">
         <br></br>
       <form onSubmit={handleAnswerSubmit}>
         <label>
-          Answer:
+          Answer: 
           <input
             name="answer"
             type="text"
             onChange={handleFieldChange}
-            value={answer.answer}
+            value={userAnswer}
           />
           </label>
         <input className="button submit-it" type="submit" value="Submit"/>

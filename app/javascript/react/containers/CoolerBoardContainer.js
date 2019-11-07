@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react"
 import CategoryTile from "../components/CategoryTile"
 
 const CoolerBoardContainer= (props) => {
-  // debugger
   const [categories, setCategories] = useState([])
   const [user, setUser] = useState({})
   
@@ -25,9 +24,9 @@ const CoolerBoardContainer= (props) => {
     // debugger
     .then(response => response.json())
     .then(gameData => {
-      debugger
+      // debugger
       setCategories(gameData.gameState)
-      debugger
+      // debugger
       setUser(gameData.user)
     })
     // debugger
@@ -54,30 +53,31 @@ const CoolerBoardContainer= (props) => {
     setGameState(gameData.gameState)
   }
 
-  const chooseCategory = (event) => {
+  const broadcastUserAnswer = (clueId, userAnswer) => {
+    // debugger
     App.gameChannel.send({
-      message: "Monkeys are cool",
+      userAnswer: userAnswer,
       user: user,
-      selection: selection
+      clueId: clueId
     })
   }
-debugger
+
   const categoriesList = categories.map(category => {
     return(
       <CategoryTile
         key={category.id}
         title={category.title}
         clues={category.clues}
+        broadcastUserAnswer={broadcastUserAnswer}
       />
     )
   })
 
   return(
     <>
-      <div className="card-deck">
+      <div className="card-deck justify-content-center">
         {categoriesList}
       </div>
-      <button onClick={chooseCategory}>Fun Button</button>
     </>
   )
 }

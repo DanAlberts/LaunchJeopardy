@@ -17,3 +17,6 @@ Todo List:
 * create `GameSerializer` to be used in the games controller instead of `game_json`
 
 * start sending actioncable broadcasts to backend
+
+
+<a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by rawpixel.com - www.freepik.com</a>

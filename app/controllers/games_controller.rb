@@ -1,13 +1,12 @@
 class GamesController < ApplicationController
 
-  # def start_game
-  #   # if a game is currently open, join it. 
-  #   # TODO once multiple players can be in a game...
-    
-  #   # Otherwise, create a new game
-  #   created_game = GameCreator.new
-  #   created_game.generate_new_game
-  # end
+  def join_game
+    created_game = GameCreator.new(current_user)
+    created_game.generate_new_game
+binding.pry
+    # redirect_to created_game.game
+    redirect_to "/games/#{created_game.game.id}"
+  end
 
   def show
     # create template with div and id of app to render react

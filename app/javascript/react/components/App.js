@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Home from '../containers/Home'
 import CoolerBoardContainer from '../containers/CoolerBoardContainer'
-import GameShow from '../containers/GameShow'
+
 export const App = (props) => {
 
   return (

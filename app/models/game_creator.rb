@@ -1,5 +1,5 @@
 class GameCreator
-  attr_reader :categories, :selections
+  attr_reader :categories, :selections, :game
 
   def initialize(user)
     @user = user
@@ -20,7 +20,7 @@ class GameCreator
   private
 
   def create_game_session
-    GameSession.create(user: @user, game: @game)
+    GameSession.create(user: @user, game: @game, score: 0)
   end
 
   def create_selections_for_game
@@ -29,7 +29,7 @@ class GameCreator
     @categories.each do |category|
       category.clues.each do |clue| 
         # binding.pry
-        @selections << Selection.create(game: @game, clue: clue)
+        @selections << Selection.create(game: @game, clue: clue, answerStatus: false)
       end 
     end
 
@@ -41,7 +41,7 @@ class GameCreator
       category = Category.new
       category.title = category_data.title
       clues = []
-binding.pry
+# binding.pry
       category_data.clues.each_with_index do |clue, index|
         newClue = Clue.new
         newClue.question = clue.question
