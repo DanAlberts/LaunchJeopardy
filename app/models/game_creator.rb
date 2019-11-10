@@ -1,5 +1,5 @@
 class GameCreator
-  attr_reader :categories, :selections, :game
+  attr_reader :categories, :selections, :game, :score
 
   def initialize(user)
     @user = user
@@ -7,6 +7,7 @@ class GameCreator
     @game = Game.create
     @categories = []
     @selections = []
+    @score = 0
   end
   
   def generate_new_game
@@ -20,7 +21,7 @@ class GameCreator
   private
 
   def create_game_session
-    GameSession.create(user: @user, game: @game, score: 0)
+    GameSession.create(user: @user, game: @game, score: @score)
   end
 
   def create_selections_for_game
@@ -73,6 +74,26 @@ class GameCreator
     elsif index == 2
       return 300
     elsif index == 3
+      return 400
+    elsif index == 4
+      return 500
+    elsif index == 5
+      return 100
+    elsif index == 6
+      return 200
+    elsif index == 7
+      return 300
+    elsif index == 8
+      return 400
+    elsif index == 9
+      return 500
+    elsif index == 10
+      return 100
+    elsif index == 11
+      return 200
+    elsif index == 12
+      return 300
+    elsif index == 13
       return 400
     else
       return 500

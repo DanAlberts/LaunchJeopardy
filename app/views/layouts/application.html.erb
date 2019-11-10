@@ -10,7 +10,9 @@
 
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
-    <div id="home"></div>
+    <div id="home" class="nav-link navbar">
+      <%= link_to 'Home', root_path %>
+    </div>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
@@ -33,17 +35,6 @@
   </div>
   <section>
 </nav>
-  <%# <header class="masthead">
-    <div class="container d-flex h-100 align-items-center">
-      <div class="mx-auto text-center">
-        <h1 class="mx-auto my-0 text-uppercase">KnowItAll</h1>
-        <h2 class="text-white-50 mx-auto mt-2 mb-5">A Jeopardy-esqe trivia web game</h2>
-        <button class="btn btn-primary">
-          <%= link_to 'Play', "/games/#{:id}" %>
-        <%# </button> %>
-      <%# </div> %>
-    <%# </div> %>
-  <%# </header> %> 
   <%- flash.each do |key, value| -%>
     <div class="flash flash-<%= key %>">
       <%= value %>

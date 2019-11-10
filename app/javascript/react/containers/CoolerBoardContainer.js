@@ -54,7 +54,6 @@ const CoolerBoardContainer= (props) => {
   }
 
   const broadcastUserAnswer = (clueId, userAnswer) => {
-    // debugger
     App.gameChannel.send({
       userAnswer: userAnswer,
       user: user,
