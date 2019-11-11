@@ -4,6 +4,7 @@ import CategoryTile from "../components/CategoryTile"
 const CoolerBoardContainer= (props) => {
   const [categories, setCategories] = useState([])
   const [user, setUser] = useState({})
+  const [currentScore, setCurrentScore] = useState(0)
   
   // to use once AC is setup => const [selection, setSelection] = useState({selectionId: null, correctAnswerStatus: null})
 
@@ -43,18 +44,17 @@ const CoolerBoardContainer= (props) => {
         received: data => {
           // Data broadcasted from the chat channel
           console.log(data)
-          
           handleGameReceipt(data)
         }
       })
   }, [])
 
   const handleGameReceipt = (newGameData) => {
-    setGameState(gameData.gameState)
+    // setGameState(gameData.gameState)
+    setCurrentScore(newGameData.score)
   }
 
   const broadcastUserAnswer = (clueId, userAnswer) => {
-    // debugger
     App.gameChannel.send({
       userAnswer: userAnswer,
       user: user,
@@ -78,6 +78,7 @@ const CoolerBoardContainer= (props) => {
       <div className="card-deck justify-content-center">
         {categoriesList}
       </div>
+      <h1 className="score">Player 1: {currentScore}</h1>
     </>
   )
 }

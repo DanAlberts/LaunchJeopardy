@@ -10,8 +10,14 @@ const Home = (props) => {
       <div className="mx-auto text-center">
         <h1 className="mx-auto my-0 text-uppercase">KnowItAll</h1>
         <h2 className="text-white-50 mx-auto mt-2 mb-5">A Jeopardy-esqe trivia web game</h2>
-        <button className="btn btn-primary">
+        <button className="btn btn-primary fontb">
         <a href="/join_game">Play</a>
+        </button>
+        <button className="btn btn-primary fontb">
+        <a href="/join_game">Custom Game</a>
+        </button>
+        <button className="btn btn-primary fontb">
+        <a href="/categories/new">Add Category</a>
         </button>
       </div>
     </div>

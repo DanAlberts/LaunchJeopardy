@@ -23,18 +23,18 @@ class GameChannel < ApplicationCable::Channel
 
     game_session = GameSession.find_by(user_id: user_id, game_id: game_id)
     # DETERMINE ANSWER STATUS 
-    if clue.answer == user_answer
+    if clue.answer.downcase == user_answer
       game_session.score = game_session.score + selection.clue.value
-      selection.answerStatus = true
+      selection.answer_status = true
     else 
       game_session.score = game_session.score - selection.clue.value
-      selection.answerStatus = true
+      selection.answer_status = true
     end
 
     game_session.save!
 
     # ActionCable.server.broadcast("game_#{params[:game_id]}", { gameState: game_json(game), user: current_user })
-    ActionCable.server.broadcast("game_#{params[:game_id]}", { gameState: game_json(game) })
+    ActionCable.server.broadcast("game_#{params[:game_id]}", {score: game_session.score, gameState: game_json(game) })
   end
 
   private 

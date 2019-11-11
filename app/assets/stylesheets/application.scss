@@ -15,7 +15,9 @@
 }
 
 .card-deck {
-  opacity: 0.9;
+  opacity: 0.95;
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 
 body {
@@ -24,9 +26,20 @@ body {
   background-image: url(/assets/background.jpg);
 }
 
+.hov:hover{
+  margin-top: 3px;
+  // margin-left: 3px;
+  margin-right: 3px;
+  border: 4px solid #FEE59D;
+}
+
 .card{
-  margin: 20px 20px 20px 20px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 100px;
+  margin-right: 10px;
   opacity: 1;
+  overflow: hidden;
 }
 
 .sign{
@@ -39,8 +52,10 @@ body {
   height: 10%;
 }
 .qCard{
-  height: 80%;
+  font-size: 36px;
+  height: 70%;
   width: 80%;
+  padding: 5px;
 }
 .modalC{
   background-color: #440750;
@@ -94,7 +109,7 @@ body {
   font-weight: 700;
   line-height: 1;
   color: #000;
-  opacity: .3;
+  opacity: .05;
   cursor: pointer;
   border: none;
 }
@@ -170,14 +185,14 @@ button {
   font-weight: 700;
   line-height: 1;
   color: #000;
-  opacity: .3;
+  opacity: .005;
   cursor: pointer;
   border: none;
   outline: 0 !important;
 }
 
 .modali-close-button:hover {
-  opacity: .8;
+  opacity: .005;
   text-decoration: none;
 }
 
@@ -594,11 +609,13 @@ button {
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: .15rem;
-  border: 0;
+  border: 2px;
+  border-color: white;
 }
 
 .btn-primary {
   background-color: white;
+  opacity: 0.7;
 }
 
 .btn-primary:hover {
@@ -612,4 +629,98 @@ button {
 
 .btn-primary:active {
   background-color: #467370 !important;
+}
+
+.navbar a {
+  color: white;
+  font-size: 20px;
+  font-family: Gyparody;
+}
+
+.play{
+  background-color: transparent;
+}
+
+.login-or {
+  position: relative;
+  color: #aaa;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.span-or {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -2px;
+  margin-left: -25px;
+  background-color: #fff;
+  width: 50px;
+  text-align: center;
+}
+
+.hr-or {
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.send-button {
+  background: #54C7C3;
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+  padding: 8px 25px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.g-button {
+  color: #fff !important;
+  border: 1px solid #EA4335;
+  background: #ea4335 !important;
+  width: 100%;
+  font-weight: 600;
+  color: #fff;
+  padding: 8px 25px;
+}
+
+.my-input {
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: text;
+  padding: 8px 10px;
+  transition: border .1s linear;
+}
+
+.header-title {
+  margin: 5rem 0;
+}
+
+.fbo{
+  background-color: white;
+  border-radius: 7px;
+  opacity: .9;
+  color: purple;
+  padding: 20px 20px 20px 20px;
+}
+
+.form-center {
+  padding-top: 200px;
+}
+
+.fontb {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 100%;
+  color: #440750;
+}
+
+.score{
+  padding-bottom: 20px;
 }

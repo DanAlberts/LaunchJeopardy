@@ -4,10 +4,11 @@ import { Redirect } from "react-router-dom"
 const CategoryForm = (props) => {
   const[shouldRedirect, setShouldRedirect] = useState(false)
   const[newCategory, setNewCategory] = useState({
-    name: "",
-    location: "",
-    description: "",
-    image: ""
+    title: ""
+  })
+  const[newClue, setNewClue] = useState({
+    question: "",
+    answer: ""
   })
 
   const handleFieldChange = event => {
@@ -17,37 +18,18 @@ const CategoryForm = (props) => {
     })
   }
 
-  const clearFields = (event) => {
+  const handleCategorySubmit = (event) =>{
     event.preventDefault()
-    setNewCategory({
-      name: "",
-      location: "",
-      description: "",
-      image: ""
-    })
-    setErrors({})
-  }
-
-
-  const handleParkSubmit = (event) =>{
-    event.preventDefault()
-    if (!validForSubmission()){
-      return
-    }
-
     let payload = {
-      name:newPark.name,
-      location:newPark.location,
-      description:newPark.description,
-      image:newPark.image
+      category: newCategory.title,
+      question: newClue.question,
+      answer: newClue.answer,
     }
 
-    addNewPark(payload)
-    setNewPark({
-      name: "",
-      location: "",
-      description: "",
-      image: ""
+    addNewClue(payload)
+    setNewClue({
+      question: "",
+      answer: "",
     })
   }
 
@@ -83,56 +65,139 @@ const CategoryForm = (props) => {
     return <Redirect to="/categories" />
   }
 
-
   return(
-    <div className="form narrow-form" id="park-review-form">
-      <h2 id="review-form-title">Submit a Category</h2>
-      <form onSubmit={handleCategorySubmit} className="new-parkform">
-        <ErrorList errors={errors} />
-        <label>
-          Category Title
-          <input
-            name="name"
-            type="text"
-            onChange={handleFieldChange}
-            value={newCategory.title}
-          />
-        </label>
+    <div className="form-center">
+      <div className="form-group">
+        <h2>Submit a Category</h2>
+        <form className="form">
+        <fieldset>
+          <label>
+            Category Title
+            <input
+              className="form-control"
+              name="category"
+              type="text"
+              onChange={handleFieldChange}
+              value={newCategory.title}
+            />
+          </label>
+        </fieldset>
+          <fieldset>
+            <label>
+              Clue 100 - Question
+              <input
+                className="form-control"
+                name="100"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.question}
+              />
+            </label>
+            <label>
+              Clue 100 - Answer
+              <input
+                className="form-control"
+                name="100"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.answer}
+              />
+            </label>
+          </fieldset>
+          <fieldset>
+            <label>
+              Clue 200 - Question
+              <input
+                className="form-control"
+                name="200"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.question}
+              />
+            </label>
+            <label>
+              Clue 200 - Answer
+              <input
+                className="form-control"
+                name="200"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.answer}
+              />
+            </label>
+            </fieldset>
+          <fieldset>
+            <label>
+              Clue 300 - Question
+              <input
+                className="form-control"
+                name="300"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.question}
+              />
+            </label>
+            <label>
+              Clue 300 - Answer
+              <input
+                className="form-control"
+                name="300"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.answer}
+              />
+            </label>
+            </fieldset>
+          <fieldset>
+            <label>
+              Clue 400 - Question
+              <input
+                className="form-control"
+                name="400"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.question}
+              />
+            </label>
+            <label>
+              Clue 400 - Answer
+              <input
+                className="form-control"
+                name="400"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.answer}
+              />
+            </label>
+            </fieldset>
+          <fieldset>
+            <label>
+              Clue 500 - Question
+              <input
+                className="form-control"
+                name="500"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.question}
+              />
+            </label>
+            <label>
+              Clue 500 - Answer
+              <input
+                className="form-control"
+                name="500"
+                type="text"
+                onChange={handleFieldChange}
+                value={newClue.answer}
+              />
+            </label>
+          </fieldset>
 
-        <label>
-          Clue
-          <input
-            name="location"
-            type="text"
-            onChange={handleFieldChange}
-            value={newPark.location}
-          />
-        </label>
-
-        <label>
-          Park Description
-          <textarea
-            name="description"
-            rows="3"
-            onChange={handleFieldChange}
-            value={newPark.description}
-          />
-        </label>
-
-        <label>
-          Park Image URL
-          <input
-            name="image"
-            type="text"
-            onChange={handleFieldChange}
-            value={newPark.image}
-          />
-        </label>
-
-        <input className="button submit-it" type="submit" value="Submit"/>
-      </form>
+          <input className="button submit-it" type="submit" value="Submit"/>
+        </form>
+      </div>
     </div>
   )
 }
 
-export default ParkForm
+export default CategoryForm

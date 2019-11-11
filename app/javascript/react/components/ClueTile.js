@@ -6,9 +6,18 @@ const ClueTile = (props) => {
   let clue = props.clue
   let answer = props.answer
 
+  let sesame
+  function open() {
+    sesame = setTimeout(toggleCompleteModal, 15000)
+  }
+  function close() {
+    toggleCompleteModal();
+    clearTimeout(sesame);
+  }
   const [completeExample, toggleCompleteModal] = useModali({
-    onShow: () => setTimeout(toggleCompleteModal, 15000),
+    onShow: open,
     animated: true,
+    centered: true,
     title: `${clue}`,
     message: <AnswerForm
               clueId={props.id}
@@ -16,24 +25,14 @@ const ClueTile = (props) => {
               broadcastUserAnswer={props.broadcastUserAnswer}
             />,
     large: true,
-    buttons: [
-      <Modali.Button
-        label="Cancel"
-        isStyleCancel
-        onClick={() => toggleCompleteModal()}
-      />
-    ],
   });
 
   return(
     <div>
-    <div>
-      <div className="card qCard bg-secondary">
-        <div className="card-body">
+    <div className="justify-content-center">
+      <div className="card qCard bg-secondary justify-content-center hov" onClick={toggleCompleteModal}>
+        <div className="card-body justify-content-center">
           <p>{props.value}</p>
-        </div>
-        <div className="card-footer">
-          <button className="modali-button-default" onClick={toggleCompleteModal}>Click to Answer!</button>
         </div>
       </div>
     </div>

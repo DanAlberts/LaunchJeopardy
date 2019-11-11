@@ -4,7 +4,7 @@ class CreateSelections < ActiveRecord::Migration[5.2]
       t.belongs_to :game
       t.belongs_to :clue
       t.belongs_to :user
-      t.boolean :answerStatus
+      t.boolean :answer_status
       t.timestamps
     end
   end
