@@ -30,7 +30,7 @@ class GameCreator
     @categories.each do |category|
       category.clues.each do |clue| 
         # binding.pry
-        @selections << Selection.create(game: @game, clue: clue, answerStatus: false)
+        @selections << Selection.create(game: @game, clue: clue, answer_status: false)
       end 
     end
 

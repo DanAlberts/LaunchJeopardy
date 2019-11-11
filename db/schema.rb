@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_183922) do
     t.bigint "game_id"
     t.bigint "clue_id"
     t.bigint "user_id"
-    t.boolean "answerStatus"
+    t.boolean "answer_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clue_id"], name: "index_selections_on_clue_id"
